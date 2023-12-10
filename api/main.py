@@ -79,9 +79,6 @@ def cal(pdf_data: bytes) -> dict:
         saving[x] = credit_sum[x] - debit_sum[x]
 
 
-    print("credite sum",credit_sum)
-    print("debite sum",debit_sum)
-    print("saving",saving)
 
     return {"credit_sum": credit_sum, "debit_sum":debit_sum, "saving": saving}
   
