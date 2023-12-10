@@ -84,8 +84,13 @@ def cal(pdf_data: bytes) -> dict:
   
   
 
+@app.get("/")
+async def read_root():
+    return {"Hello": "World"}
+
+
 @app.post("/upload")
-async def count_words(file: UploadFile = File(...)):
+async def read(file: UploadFile = File(...)):
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="Please upload a PDF file")
 
@@ -93,3 +98,5 @@ async def count_words(file: UploadFile = File(...)):
     # total_dct = cal(pdf_data)
     
     return cal(pdf_data)
+
+
