@@ -1,5 +1,4 @@
 from collections import defaultdict
-from PyPDF2 import PdfReader
 from io import BytesIO
 import re
 import pdfplumber
