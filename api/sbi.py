@@ -41,7 +41,7 @@ def sbi_cal(pdf):
             total[month] = {'Debit sum': debit_sum,
                             'Credit sum' : credit_sum,
                             'Saving' : saving,
-                            'balance' : balance_sum
+                            # 'balance' : balance_sum
                             }
 
         return total 
