@@ -1,15 +1,12 @@
-
-from io import BytesIO
-from PyPDF2 import PdfReader
-
-
-
 import sbi
 import nbo
+from io import BytesIO
+from PyPDF2 import PdfReader
+from fastapi import FastAPI, UploadFile, File, Form,HTTPException
+from pydantic import BaseModel
 
-from fastapi import FastAPI, UploadFile, File, HTTPException
+
 app = FastAPI()
-
 
 @app.get("/")
 async def read_root():
@@ -17,7 +14,8 @@ async def read_root():
 
 
 @app.post("/upload")
-async def read(name:str, bank: str, file: UploadFile = File(...) ):
+async def read(  name:str =  Form(...) , bank: str=Form(...), file: UploadFile = File(...) ):
+    
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="Please upload a PDF file")
 
@@ -43,8 +41,8 @@ async def read(name:str, bank: str, file: UploadFile = File(...) ):
         
         else:
             return {'msg': f'can\'t handle {bank}\'s statement at the moment.'}
+   
     except:
         return {'error msg': "Error Occured while proccesing pdf file"}
 
 # ------------------------------------------------------
-

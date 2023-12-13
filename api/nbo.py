@@ -72,6 +72,12 @@ def nbo_cal(pdf_data: bytes) -> dict:
             debit_sum[month] += row['debit']
             saving[month] += row['credit'] - row['debit']
 
+
+        print( {
+            "credit_sum": dict(credit_sum),
+            "debit_sum": dict(debit_sum),
+            "saving": dict(saving)
+        })
         return {
             "credit_sum": dict(credit_sum),
             "debit_sum": dict(debit_sum),

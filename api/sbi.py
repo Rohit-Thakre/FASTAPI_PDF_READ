@@ -39,8 +39,8 @@ def sbi_cal(pdf):
             # print("Credit sum", df[df['Txn Date'] == month]['Credit'].sum())
             # print("Balance sum",df[df['Txn Date'] == month]['Balance'].sum())
 
-            total[month] = {'Debite sum': debit_sum,
-                            'Credite sum' : credit_sum,
+            total[month] = {'Debit sum': debit_sum,
+                            'Credit sum' : credit_sum,
                             'Saving' : saving,
                             'balance' : balance_sum
                             }
