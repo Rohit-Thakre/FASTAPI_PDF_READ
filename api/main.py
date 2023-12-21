@@ -4,13 +4,14 @@ from io import BytesIO
 from PyPDF2 import PdfReader
 from fastapi import FastAPI, UploadFile, File, Form,HTTPException
 from pydantic import BaseModel
+import re
 
 
 app = FastAPI()
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+# @app.get("/")
+# async def read_root():
+#     return {"Hello": "World"}
 
 
 @app.post("/upload")
@@ -26,9 +27,9 @@ async def read(  name:str =  Form(...) , bank: str=Form(...), file: UploadFile =
     pdf_stream = BytesIO(pdf_data)
     pdf = PdfReader(pdf_stream)
     page1 = pdf.pages[0]
-    text = page1.extract_text()[:200].lower()
+    text = page1.extract_text()[:len(name)].lower()
 
-    if name.lower() not in text: 
+    if text != name.lower(): 
         raise HTTPException(status_code=400, detail=f"Pdf file does not belongs to {name}.")
 
 
