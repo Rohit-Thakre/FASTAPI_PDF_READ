@@ -47,8 +47,9 @@ def nbo_cal(pdf_data: bytes) -> dict:
                 rows.append({'month': month, 'credit': credite, 'debit': -debit, "ac_bal" : ac_bal})
 
             except:
-                print('line has no related data')
-                print(line)
+                # print('line has no related data')
+                # print(line)
+                pass
 
 
     monthly_sum_credit = defaultdict(float)
