@@ -46,7 +46,7 @@ def sbi_cal(pdf):
 
         return total 
     
-    except:
-        return {"msg" : "Error Occured while proccesing file"}
+    except Exception as e :
+        return {"msg" : "Error Occured while proccesing file", "Exception" : e}
 
         
